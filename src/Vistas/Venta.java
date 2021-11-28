@@ -48,7 +48,7 @@ public class Venta extends javax.swing.JFrame {
         jbtn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Venta");
+        setTitle("Ingresar Venta");
 
         jLabel1.setText("Rut cliente");
 

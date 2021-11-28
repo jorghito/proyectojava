@@ -48,7 +48,7 @@ public class Compra extends javax.swing.JFrame {
         jbtn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Compra");
+        setTitle("Ingresar Compra");
 
         jLabel1.setText("Rut proveedor");
 
