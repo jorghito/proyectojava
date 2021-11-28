@@ -3,6 +3,7 @@ package Clases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -11,7 +12,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
     
-    public Connection obtenerConexion() {
+    public static Connection obtenerConexion() {
         
         Connection connection = null;
         try {
@@ -27,10 +28,14 @@ public class Conexion {
         return connection;
         
 }
-    public static void main(String[] args) {
-        Conexion conn = new Conexion();
-        conn.obtenerConexion();
-    }
+//    public static void main(String[] args) {
+//        Conexion conn = new Conexion();
+//        conn.obtenerConexion();
+//    }
+
+    
+
+   
     
     
    

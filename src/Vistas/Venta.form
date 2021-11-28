@@ -28,11 +28,12 @@
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jtbn_guardar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="jbtn_limpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="jbtn_calcular" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jtbn_guardar" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="jbtn_limpiar" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="jbtn_calcular" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -46,12 +47,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jtxt_rut" max="32767" attributes="0"/>
                           <Component id="jtxt_nombre" max="32767" attributes="0"/>
                           <Component id="jcom_plataforma" pref="128" max="32767" attributes="0"/>
                           <Component id="jtxt_fecha" max="32767" attributes="0"/>
                           <Component id="jtxt_cantidad" max="32767" attributes="0"/>
                           <Component id="jtxt_precio" max="32767" attributes="0"/>
+                          <Component id="jtxt_rut" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="43" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="356" max="-2" attributes="0"/>
@@ -67,9 +68,14 @@
                       <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                      <Component id="jtxt_total" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <Component id="jtxt_total" min="-2" pref="96" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jButton1" min="-2" pref="39" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -117,7 +123,7 @@
                   </Group>
                   <Component id="jtxt_precio" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jtbn_guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbtn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,7 +141,9 @@
                   <Component id="jtxt_total" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -177,6 +185,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxt_rut">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxt_rutActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxt_nombre">
     </Component>
@@ -228,12 +239,16 @@
     </Container>
     <Component class="javax.swing.JButton" name="jtbn_guardar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/guardar.png"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn_limpiar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Limpiar"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/limpiar.png"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
@@ -243,7 +258,16 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtn_calcular">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Calcular"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/calcular.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/volver.png"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

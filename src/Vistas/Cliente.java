@@ -4,15 +4,21 @@
  */
 package Vistas;
 
+import Clases.Conexion;
+import com.mysql.cj.protocol.Resultset;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tu_jo
  */
 public class Cliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cliente
-     */
+    PreparedStatement ps;
+    Resultset rs;
+
     public Cliente() {
         initComponents();
     }
@@ -32,9 +38,8 @@ public class Cliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jtbn_guardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jtxt_rut = new javax.swing.JTextField();
         jtxt_nombre = new javax.swing.JTextField();
@@ -59,15 +64,34 @@ public class Cliente extends javax.swing.JFrame {
 
         jLabel6.setText("Correo");
 
-        jButton1.setText("Guardar");
+        jtbn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
+        jtbn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbn_guardarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Modificar");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificar.png"))); // NOI18N
 
-        jButton3.setText("Eliminar");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Limpiar");
+        jtxt_rut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_rutFocusGained(evt);
+            }
+        });
+        jtxt_rut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_rutActionPerformed(evt);
+            }
+        });
 
-        jbtn_volver.setText("Volver");
+        jbtn_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/volver.png"))); // NOI18N
         jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_volverActionPerformed(evt);
@@ -81,35 +105,35 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jtbn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                        .addComponent(jbtn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxt_rut)
-                            .addComponent(jtxt_nombre)
-                            .addComponent(jtxt_appaterno)
-                            .addComponent(jtxt_apmaterno)
-                            .addComponent(jtxt_telefono)
-                            .addComponent(jtxt_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(150, 150, 150))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jButton1)
-                .addGap(69, 69, 69)
-                .addComponent(jButton2)
-                .addGap(72, 72, 72)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
-                .addComponent(jbtn_volver)
-                .addGap(91, 91, 91))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxt_rut)
+                                    .addComponent(jtxt_nombre)
+                                    .addComponent(jtxt_appaterno)
+                                    .addComponent(jtxt_apmaterno)
+                                    .addComponent(jtxt_telefono)
+                                    .addComponent(jtxt_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +164,7 @@ public class Cliente extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton4)
-                                                .addGap(61, 61, 61))))
+                                                .addGap(59, 59, 59))))
                                     .addComponent(jtxt_apmaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(37, 37, 37)
                                 .addComponent(jLabel5))
@@ -148,13 +172,13 @@ public class Cliente extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addComponent(jLabel6))
                     .addComponent(jtxt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jbtn_volver))
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtbn_guardar)
+                        .addComponent(jbtn_volver))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -166,16 +190,38 @@ public class Cliente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jbtn_volverActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jtxt_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_rutActionPerformed
+
+    }//GEN-LAST:event_jtxt_rutActionPerformed
+
+    private void jtxt_rutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_rutFocusGained
+
+    }//GEN-LAST:event_jtxt_rutFocusGained
+
+    private void jtbn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbn_guardarActionPerformed
+        Connection c = null;
+        Conexion con = new Conexion();
+
+        try {
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jtbn_guardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     /*public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*try {
+     */
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -194,7 +240,7 @@ public class Cliente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Cliente().setVisible(true);
             }
@@ -202,9 +248,7 @@ public class Cliente extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -213,6 +257,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton jbtn_volver;
+    private javax.swing.JButton jtbn_guardar;
     private javax.swing.JTextField jtxt_apmaterno;
     private javax.swing.JTextField jtxt_appaterno;
     private javax.swing.JTextField jtxt_correo;
@@ -220,4 +265,8 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_rut;
     private javax.swing.JTextField jtxt_telefono;
     // End of variables declaration//GEN-END:variables
+
+    private Conexion getConection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
