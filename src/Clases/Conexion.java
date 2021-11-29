@@ -29,8 +29,8 @@ public class Conexion {
         
 }
 //    public static void main(String[] args) {
-//        Conexion conn = new Conexion();
-//        conn.obtenerConexion();
+//        Conexion con = new Conexion();
+//        con.obtenerConexion();
 //    }
 
     

@@ -125,7 +125,7 @@ public class BuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtn_volverActionPerformed
 
     private void jbtn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_nuevoActionPerformed
-        new Cliente().setVisible(true);
+        new VistaCliente().setVisible(true);
         dispose();
     }//GEN-LAST:event_jbtn_nuevoActionPerformed
 

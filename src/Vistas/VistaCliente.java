@@ -4,7 +4,9 @@
  */
 package Vistas;
 
+import Clases.Cliente;
 import Clases.Conexion;
+import Clases.Metodos;
 import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author tu_jo
  */
-public class Cliente extends javax.swing.JFrame {
+public class VistaCliente extends javax.swing.JFrame {
 
     PreparedStatement ps;
     Resultset rs;
 
-    public Cliente() {
+    public VistaCliente() {
         initComponents();
     }
 
@@ -174,8 +176,8 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jtxt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtbn_guardar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtbn_guardar, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbtn_volver))
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(54, 54, 54))
@@ -203,12 +205,16 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_rutFocusGained
 
     private void jtbn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbn_guardarActionPerformed
-        Connection c = null;
-        Conexion con = new Conexion();
+        
+//        Conexion con = new Conexion();
+        Metodos met = new Metodos();
+        Cliente cliente = new Cliente();
 
-        try {
+        if (met.agregarCliente(cliente)) {
+            JOptionPane.showMessageDialog(this, "Se a agregado cliente exitosamente","aviso",1);
             
-        } catch (Exception e) {
+        }else{
+            JOptionPane.showMessageDialog(this,"Error al agregar cliente");
         }
     }//GEN-LAST:event_jtbn_guardarActionPerformed
 
@@ -229,20 +235,20 @@ public class Cliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
  /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cliente().setVisible(true);
+                new VistaCliente().setVisible(true);
             }
         });
     }*/
